@@ -60,6 +60,26 @@ namespace Homework_Sz_M.Services
             }
         }
 
+        public async Task<List<Supplier>> GetAllSupliers()
+        {
+            HttpResponseMessage resp = await _httpClient.GetAsync("Suppliers");
+            resp.EnsureSuccessStatusCode();
+        
+            var json = await resp.Content.ReadAsStringAsync();
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+        
+            if (data != null)
+            {
+                var suppliers = JsonConvert.DeserializeObject<List<Supplier>>(data.value.ToString());
+                
+                return suppliers;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private decimal CalculateTotalAmount(List<OrderDetail> orderDetails)
         {
             decimal total = 0;

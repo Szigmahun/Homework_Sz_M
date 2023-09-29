@@ -8,5 +8,6 @@ namespace Homework_Sz_M.Abstractions.Services
     {
         Task<List<Product>> GetAllProductsDataAsync();
         Task<DetailsOrderDetail> GetOrderAmountForSupplier(int supplierID);
+        Task<List<Supplier>> GetAllSupliers();
     }
 }

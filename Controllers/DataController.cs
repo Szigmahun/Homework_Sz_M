@@ -42,5 +42,17 @@ namespace Homework_Sz_M.Controllers
 
             return Ok(result);
         }
+        [HttpGet(nameof(GetAllSupliers))]
+        public async Task<IActionResult> GetAllSupliers()
+        {
+            var result = await _dataService.GetAllSupliers();
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
     }
 }
